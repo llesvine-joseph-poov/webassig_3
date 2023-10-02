@@ -25,19 +25,132 @@ function onHttpStart() {
 
 app.get('/vehicles', (req, res) => {
     dataService.getAllVehicles()
-        .then(data => res.json(data))
+    .then(data => {
+        let tableData = `
+            <table border="1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>VIN</th>
+                        <th>Year</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Category</th>
+                        <th>Color</th>
+                        <th>Navigation</th>
+                        <th>Fuel Economy (City)</th>
+                        <th>Fuel Economy (Highway)</th>
+                        <th>Price</th>
+                        <th>Horsepower</th>
+                        <th>Drivetrain</th>
+                        <th>Powertrain</th>
+                        <th>Registration Date</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+        
+        data.forEach(vehicle => {
+            tableData += `
+                <tr>
+                    <td>${vehicle.VIN}</td>
+                    <td>${vehicle.year}</td>
+                    <td>${vehicle.make}</td>
+                    <td>${vehicle.model}</td>
+                    <td>${vehicle.category}</td>
+                    <td>${vehicle.color}</td>
+                    <td>${vehicle.navigation ? 'Yes' : 'No'}</td>
+                    <td>${vehicle.fuelEconomyCity}</td>
+                    <td>${vehicle.fuelEconomyHighway}</td>
+                    <td>${vehicle.price}</td>
+                    <td>${vehicle.horsepower}</td>
+                    <td>${vehicle.drivetrain}</td>
+                    <td>${vehicle.powertrain}</td>
+                    <td>${vehicle.registrationDate}</td>
+                </tr>`;
+        });
+        
+        tableData += `</tbody></table>`;
+        res.send(tableData);
+    })
         .catch(err => res.json({message: err}));
 });
 
 app.get('/vehicles2023', (req, res) => {
     dataService.get2023Vehicles()
-        .then(data => res.json(data))
+    .then(data => {
+        let tableData = `
+            <table border="1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>VIN</th>
+                        <th>Year</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Category</th>
+                        <th>Color</th>
+                        <th>Navigation</th>
+                        <th>Fuel Economy (City)</th>
+                        <th>Fuel Economy (Highway)</th>
+                        <th>Price</th>
+                        <th>Horsepower</th>
+                        <th>Drivetrain</th>
+                        <th>Powertrain</th>
+                        <th>Registration Date</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+        
+        data.forEach(vehicle => {
+            tableData += `
+                <tr>
+                    <td>${vehicle.VIN}</td>
+                    <td>${vehicle.year}</td>
+                    <td>${vehicle.make}</td>
+                    <td>${vehicle.model}</td>
+                    <td>${vehicle.category}</td>
+                    <td>${vehicle.color}</td>
+                    <td>${vehicle.navigation ? 'Yes' : 'No'}</td>
+                    <td>${vehicle.fuelEconomyCity}</td>
+                    <td>${vehicle.fuelEconomyHighway}</td>
+                    <td>${vehicle.price}</td>
+                    <td>${vehicle.horsepower}</td>
+                    <td>${vehicle.drivetrain}</td>
+                    <td>${vehicle.powertrain}</td>
+                    <td>${vehicle.registrationDate}</td>
+                </tr>`;
+        });
+        
+        tableData += `</tbody></table>`;
+        res.send(tableData);
+    })
         .catch(err => res.json({message: err}));
 });
 
 app.get('/brands', (req, res) => {
     dataService.getBrands()
-        .then(data => res.json(data))
+    .then(data => {
+        let tableData = `
+            <table border="1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Brand</th>
+                        <th>Manufacturer</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+        
+        data.forEach(brand => {
+            tableData += `
+                <tr>
+                    <td>${brand.id}</td>
+                    <td>${brand.brand}</td>
+                    <td>${brand.manufacturer}</td>
+                </tr>`;
+        });
+        
+        tableData += `</tbody></table>`;
+        res.send(tableData);
+    })
         .catch(err => res.json({message: err}));
 });
 
