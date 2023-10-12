@@ -1,23 +1,21 @@
 {
   "name": "web322-app",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "scripts": {
+    "tw:build": "tailwindcss build -i ./public/css/tailwind.css -o ./public/css/main.css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Lesvine Joseph Poovakulath",
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "daisyui": "^3.9.2",
     "express": "^4.18.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/llesvine-joseph-poov/web322-app.git"
-  },
-  "bugs": {
-    "url": "https://github.com/llesvine-joseph-poov/web322-app/issues"
-  },
-  "homepage": "https://github.com/llesvine-joseph-poov/web322-app#readme",
-  "description": ""
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
 }
