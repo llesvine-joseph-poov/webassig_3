@@ -36,25 +36,14 @@
         </div>
         
     </div>
-    <div id="setsDisplay"></div>
+   
 
     <script>
-        function fetchSetsByTheme() {
-            const theme = document.getElementById('themeSelector').value;
-            fetch(`/lego/sets?theme=${theme}`)
-            .then(response => response.json())
-            .then(data => {
-                let html = '<ul>';
-                data.forEach(set => {
-                    html += `<li>${set.name} (${set.set_num}) - ${set.year}</li>`;
-                });
-                html += '</ul>';
-                document.getElementById('setsDisplay').innerHTML = html;
-            })
-            .catch(error => {
-                console.error("There was an error fetching the Lego sets:", error);
-            });
-        }
+       function fetchSetsByTheme() {
+    const theme = document.getElementById('themeSelector').value;
+    window.location.href = `/lego/sets?theme=${theme}`;
+}
+
         </script>
         
 </body>

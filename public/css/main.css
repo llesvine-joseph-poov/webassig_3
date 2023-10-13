@@ -60,8 +60,10 @@ nav h1 {
 }
 
 .dropbtn {
-    background-color: #FFF;
-    padding: 10px 15px;
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
     border: none;
     cursor: pointer;
 }
@@ -90,7 +92,12 @@ nav h1 {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+.theme-dropdown {
+    width: 100%; /* To make the select box take the full width of its parent */
+    padding: 12px; 
+    box-sizing: border-box; /* To ensure padding does not increase total width */
+    font-size: 16px;
+}
 /* Main Content */
 
 .main-content {

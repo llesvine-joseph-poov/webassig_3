@@ -24,16 +24,18 @@ app.get("/lego/sets", async (req, res) => {
     try {
         if (req.query.theme) {
             let sets = await legoData.getSetsByTheme(req.query.theme);
-            res.send(sets);
+            res.setHeader('Content-Type', 'application/json; charset=utf-8');
+            res.send(JSON.stringify(sets, null, 4));  // Beautify JSON with 4 spaces indentation
         } else {
             let sets = await legoData.getAllSets();
-            res.send(sets);
+            res.setHeader('Content-Type', 'application/json; charset=utf-8');
+            res.send(JSON.stringify(sets, null, 4));  // Beautify JSON with 4 spaces indentation
         }
     } catch (err) {
         res.status(404).send(err);
-        
     }
 });
+
 
 app.get("/lego/sets/:setNum", async (req, res) => {
     try {
