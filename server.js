@@ -16,6 +16,10 @@ app.get("/about", (req, res) => {
     res.sendFile(path.join(__dirname, '/views/about.html'));
 });
 
+app.get('/data/setData.json', (req, res) => {
+    res.sendFile(path.join(__dirname, '/data/setData.json'));
+});
+
 app.get("/lego/sets", async (req, res) => {
     try {
         if (req.query.theme) {
