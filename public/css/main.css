@@ -22,22 +22,73 @@ a {
 
 /* Header */
 
-header {
+header nav {
     background-color: #ffffff;
-    padding: 20px 0;
+    padding: 15px 5%;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
 }
 
-header h1 {
+nav h1 {
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: 10px;
 }
 
-header nav {
+.nav-buttons {
     display: flex;
-    justify-content: space-between;
-    padding: 0 15%;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px 15px;
+    color: #333;
+    background-color: #FFF;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #FFF;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* Main Content */
@@ -46,56 +97,44 @@ header nav {
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
 }
 
-.main-content .card {
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.4rem;
+}
+
+/* Lego Card Styles */
+
+.card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    padding: 20px;
     transition: transform 0.3s;
 }
 
-.main-content .card:hover {
+.card:hover {
     transform: scale(1.05);
-}
-
-.card img {
-    width: 100%;
-    display: block;
-    max-height: 200px;
-    object-fit: cover;
 }
 
 .card h2 {
     font-size: 1.4rem;
     margin: 10px 0;
-    padding: 0 15px;
 }
 
 .card p {
     font-size: 1rem;
     color: #777;
-    padding: 0 15px 15px;
-}
-
-.card button {
-    display: block;
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 15px;
-    margin: 20px auto;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.card button:hover {
-    background-color: #0056b3;
 }
 
 /* Footer */
@@ -106,5 +145,3 @@ footer {
     color: #fff;
     text-align: center;
 }
-
-/* Additional styles based on your needs can be added below */

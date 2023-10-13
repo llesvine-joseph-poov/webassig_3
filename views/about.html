@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Collection - About</title>
     <link rel="stylesheet" href="/css/main.css">
-    <title>About - Lego Collection</title>
 </head>
+
 <body>
-    <nav>
-        <!-- Your Navbar Code here, with the "About" link being active -->
-        <a class="active" href="/about">About</a>
-    </nav>
-    <div class="container mx-auto">
-        <section>
-            <!-- Hero Component for About -->
-            <h1>About</h1>
-            <p>All about me...</p>
-        </section>
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <img src="your_favorite_image.jpg" alt="Image representing you">
-            <div>
-                <p>Your blurb here... about hobbies, courses, etc.</p>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <h1>Lego Collection</h1>
+            <div class="nav-buttons">
+                <a href="http://localhost:8080/about" class="btn">About</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Theme</button>
+                    <div class="dropdown-content">
+                        <a href="#">Technic</a>
+                        <a href="#">Classic Town</a>
+                        <a href="#">Supplemental</a>
+                    </div>
+                </div>
             </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="hero">
+            <h1>About</h1>
+            <p>Everything you want to know about me - the designer & developer.</p>
+        </section>
+
+        <section>
+            <img src="path_to_image.jpg" alt="Image representing the designer/developer" style="width: 100%; max-width: 500px; display: block; margin: 20px auto;">
+            <p>
+                My name is John Smith and I'm currently studying at Seneca Polytechnic.
+                Donec sollicitudin molestie tortor, vel feugiat nulla maximus quis. Suspendisse ut sapien id mauris sollicitudin commodo. Quisque semper, ligula et tincidunt dapibus, nisi ante fermentum lectus, nec molestie sem eros vel neque. Duis sit amet ligula eu ligula consectetur blandit sed at mi. Sed ac odio aliquet, vestibulum justo eget, volutpat eros. Mauris a dictum erat. Vivamus sodales egestas tempus. Duis pulvinar nibh enim, vel gravida nunc egestas id. Duis magna ante, posuere id luctus id, mattis at ipsum. Nullam sit amet magna et dui varius tristique ac id nisl. Pellentesque est dolor, luctus vitae dictum ut, hendrerit lacinia lorem. Nullam a pharetra tortor.
+            </p>
         </section>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Lego Collection. All Rights Reserved.</p>
+    </footer>
+
 </body>
+
 </html>
