@@ -1,3 +1,17 @@
+/********************************************************************************
+*  WEB322 – Assignment 03
+* 
+*  I declare that this assignment is my own work in accordance with Seneca's
+*  Academic Integrity Policy:
+* 
+*  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+* 
+*  Name: Lesvine Joseph Poovakulath Student ID: 175619212 Date: 13-10-2023
+*
+*  Published URL: 
+*
+********************************************************************************/
+
 const legoData = require("./modules/legoSets");
 const path = require('path');
 const express = require('express');
