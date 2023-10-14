@@ -10,7 +10,6 @@
 
 <body>
 
-    <!-- Navigation -->
     <header>
         <nav>
             <h1><a href="http://localhost:8080/" class="btn">Lego Collection</a></h1>
@@ -19,24 +18,25 @@
                 <div class="dropdown">
                     <button class="dropbtn">Theme</button>
                     <div class="dropdown-content">
-                        <a href="#">Technic</a>
-                        <a href="#">Classic Town</a>
-                        <a href="#">Supplemental</a>
+                        <select id="themeSelector" onchange="fetchSetsByTheme()">
+                            <option value="Technic">Technic</option>
+                            <option value="Town">Town</option>
+                            <option value="Supplemental">Supplemental</option>
+                            
+                        </select>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Main Content -->
     <div class="main-content">
         <section class="hero">
             <h1>About</h1>
-            <p>Everything you want to know about me - the designer & developer.</p>
+            <p>Everything you want to know about me</p>
         </section>
 
         <section>
-            <img src="path_to_image.jpg" alt="Image representing the designer/developer" style="width: 100%; max-width: 500px; display: block; margin: 20px auto;">
             <p>
                 My name is John Smith and I'm currently studying at Seneca Polytechnic.
                 Donec sollicitudin molestie tortor, vel feugiat nulla maximus quis. Suspendisse ut sapien id mauris sollicitudin commodo. Quisque semper, ligula et tincidunt dapibus, nisi ante fermentum lectus, nec molestie sem eros vel neque. Duis sit amet ligula eu ligula consectetur blandit sed at mi. Sed ac odio aliquet, vestibulum justo eget, volutpat eros. Mauris a dictum erat. Vivamus sodales egestas tempus. Duis pulvinar nibh enim, vel gravida nunc egestas id. Duis magna ante, posuere id luctus id, mattis at ipsum. Nullam sit amet magna et dui varius tristique ac id nisl. Pellentesque est dolor, luctus vitae dictum ut, hendrerit lacinia lorem. Nullam a pharetra tortor.
@@ -44,11 +44,18 @@
         </section>
     </div>
 
-    <!-- Footer -->
+
     <footer>
         <p>&copy; 2023 Lego Collection. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        function fetchSetsByTheme() {
+        const theme = document.getElementById('themeSelector').value;
+        window.location.href = `/lego/sets?theme=${theme}`;
+        }
+
+    </script>
 </body>
 
 </html>

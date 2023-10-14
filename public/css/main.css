@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 
 *,
 *::before,
@@ -19,8 +18,6 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
-/* Header */
 
 header nav {
     background-color: #ffffff;
@@ -93,12 +90,11 @@ nav h1 {
     display: block;
 }
 .theme-dropdown {
-    width: 100%; /* To make the select box take the full width of its parent */
+    width: 100%; 
     padding: 12px; 
-    box-sizing: border-box; /* To ensure padding does not increase total width */
+    box-sizing: border-box;
     font-size: 16px;
 }
-/* Main Content */
 
 .main-content {
     max-width: 1200px;
@@ -120,7 +116,6 @@ nav h1 {
     font-size: 1.4rem;
 }
 
-/* Lego Card Styles */
 
 .card {
     background-color: #fff;
@@ -144,7 +139,7 @@ nav h1 {
     color: #777;
 }
 
-/* Footer */
+
 
 footer {
     padding: 20px 0;

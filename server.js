@@ -5,7 +5,6 @@ const app = express();
 
 const HTTP_PORT = process.env.PORT || 8080;
 
-// Static public folder
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -25,11 +24,11 @@ app.get("/lego/sets", async (req, res) => {
         if (req.query.theme) {
             let sets = await legoData.getSetsByTheme(req.query.theme);
             res.setHeader('Content-Type', 'application/json; charset=utf-8');
-            res.send(JSON.stringify(sets, null, 4));  // Beautify JSON with 4 spaces indentation
+            res.send(JSON.stringify(sets, null, 4));  
         } else {
             let sets = await legoData.getAllSets();
             res.setHeader('Content-Type', 'application/json; charset=utf-8');
-            res.send(JSON.stringify(sets, null, 4));  // Beautify JSON with 4 spaces indentation
+            res.send(JSON.stringify(sets, null, 4));  
         }
     } catch (err) {
         res.status(404).send(err);
@@ -50,7 +49,7 @@ app.get("/lego/sets/:setNum", async (req, res) => {
     }
 });
 
-// 404 handling
+
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
 });
