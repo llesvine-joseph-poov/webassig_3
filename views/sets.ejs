@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= set.name %></title>
+    <title>Lego Sets Collection</title>
+
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 
     <header>
-        <%- include('partials/navbar', {page: ''}) %>
+        <%- include('partials/navbar', {page: '/lego/sets'}) %>
         <section class="hero">
-            <h1><%= set.name %></h1>
-            <p>Below, you will find detailed information about the set: <%= set.name %></p>
+            <h1>Lego Sets Collection</h1>
+            <p>Explore our extensive collection of Lego sets.</p>
         </section>
     </header>
+    <section class="collection-intro">
+        <h2>Collection</h2>
+        <p>Browse the entire collection. Click the theme to filter by themes such as:</p><br>
+        <div class="theme-buttons">
+            <a href="/lego/sets?theme=Technic" class="btn">TECHNIC</a>
+            <a href="/lego/sets?theme=Classic Town" class="btn">CLASSIC TOWN</a>
+            <a href="/lego/sets?theme=Supplemental" class="btn">SUPPLEMENTAL</a>
+        </div>
+    </section>
 
     <div class="main-content">
-        <img src="<%= set.img_url %>" alt="<%= 'Image of ' + set.name %>" class="set-image">
-        <h2><%= set.name %></h2>
-        <p>Year: <%= set.year %></p>
-        <p>Theme: <%= set.theme %></p>
-        <p>Number of Parts: <%= set.num_parts %></p>
+        <% sets.forEach(function(set) { %>
+            <div class="set-container"><img src="<%= set.img_url %>" alt="<%= 'Image of ' + set.name %>" class="set-image"></div>
+            
+            <div class="set-info">
+                <h2><%= set.name %></h2>
+                <p>Year: <%= set.year %></p>
+                <p>Theme: <%= set.theme %></p>
+                <p>Number of Parts: <%= set.num_parts %></p>
+            </div>
+        
+          <% }); %>
+          
+        
         
         <blockquote id="quote">Quote will go here...</blockquote>
 
