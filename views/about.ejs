@@ -9,25 +9,8 @@
 </head>
 
 <body>
-
     <header>
-        <nav>
-            <h1><a href="http://localhost:8080/" class="btn">Lego Collection</a></h1>
-            <div class="nav-buttons">
-                <a href="http://localhost:8080/about" class="btn">About</a> 
-                <div class="dropdown">
-                    <button class="dropbtn">Theme</button>
-                    <div class="dropdown-content">
-                        <select id="themeSelector" onchange="fetchSetsByTheme()">
-                            <option value="Technic">Technic</option>
-                            <option value="Town">Town</option>
-                            <option value="Supplemental">Supplemental</option>
-                            
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <%- include('partials/navbar', {page: '/about'}) %>
     </header>
 
     <div class="main-content">
@@ -49,13 +32,10 @@
         <p>&copy; 2023 Lego Collection. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        function fetchSetsByTheme() {
-        const theme = document.getElementById('themeSelector').value;
-        window.location.href = `/lego/sets?theme=${theme}`;
-        }
+    
+        <script src="/js/themeSelector.js"></script>
 
-    </script>
+    
 </body>
 
 </html>

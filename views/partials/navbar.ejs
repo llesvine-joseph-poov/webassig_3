@@ -1,0 +1,9 @@
+<nav>
+    <h1><a href="http://localhost:8080/" class="btn">Lego Collection</a></h1>
+    <div class="nav-buttons">
+        <!-- Add "View Collection" before "About" -->
+        <a href="/lego/sets" class="<%= (page == '/lego/sets') ? 'active' : '' %> btn">View Collection</a>
+        <a href="/about" class="<%= (page == '/about') ? 'active' : '' %> btn">About</a> 
+        <!-- Removed dropdown for Theme -->
+    </div>
+</nav>

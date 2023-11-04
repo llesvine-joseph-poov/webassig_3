@@ -18,14 +18,15 @@ const express = require('express');
 const app = express();
 
 const HTTP_PORT = process.env.PORT || 8080;
-
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.render("home");
 });
 
-app.get("/about", (req, res) => {
+app.get("/about", (req, res) => {   
     res.render("about");
 });
 
@@ -35,38 +36,41 @@ app.get('/data/setData.json', (req, res) => {
 
 app.get("/lego/sets", async (req, res) => {
     try {
+        let sets;
         if (req.query.theme) {
-            let sets = await legoData.getSetsByTheme(req.query.theme);
-            res.setHeader('Content-Type', 'application/json; charset=utf-8');
-            res.send(JSON.stringify(sets, null, 4));  
+            sets = await legoData.getSetsByTheme(req.query.theme);
         } else {
-            let sets = await legoData.getAllSets();
-            res.setHeader('Content-Type', 'application/json; charset=utf-8');
-            res.send(JSON.stringify(sets, null, 4));  
+            sets = await legoData.getAllSets();
         }
+        // Render the 'sets.ejs' view instead of sending JSON
+        res.render("sets", { sets: sets });
     } catch (err) {
-        res.status(404).send(err);
+        res.status(404).render("404", { message: "The theme you are looking for does not exist in our database." });
     }
+    
 });
+
 
 
 app.get("/lego/sets/:setNum", async (req, res) => {
     try {
-        let set = await legoData.getSetByNum(req.params.setNum);
-        if (set) {
-            res.send(set);
+        let legoSet = await legoData.getSetByNum(req.params.setNum);
+        if (legoSet) {
+            res.render("set", { set: legoSet });
         } else {
             throw new Error('Set not found.');
         }
     } catch (err) {
-        res.status(404).send(err.message);
-    }
+        res.status(404).render("404", { message: "The Lego set you are looking for cannot be found." });
+    }    
 });
+
 
 
 app.use((req, res) => {
-    res.status(404).render("404");
+    res.status(404).render("404", { message: "Sorry, the page you are looking for cannot be found." });
 });
+
 
 legoData.initialize().then(() => {
     app.listen(HTTP_PORT, () => { console.log(`server listening on: ${HTTP_PORT}`) });
