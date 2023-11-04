@@ -1,12 +1,12 @@
 /********************************************************************************
-*  WEB322 – Assignment 03
+*  WEB322 – Assignment 04
 * 
 *  I declare that this assignment is my own work in accordance with Seneca's
 *  Academic Integrity Policy:
 * 
 *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
 * 
-*  Name: Lesvine Joseph Poovakulath Student ID: 175619212 Date: 13-10-2023
+*  Name: Lesvine Joseph Poovakulath Student ID: 175619212 Date: 03-11-2023
 *
 *  Published URL: 
 *
@@ -22,11 +22,11 @@ const HTTP_PORT = process.env.PORT || 8080;
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/home.html'));
+    res.render("home");
 });
 
 app.get("/about", (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/about.html'));
+    res.render("about");
 });
 
 app.get('/data/setData.json', (req, res) => {
@@ -65,7 +65,7 @@ app.get("/lego/sets/:setNum", async (req, res) => {
 
 
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+    res.status(404).render("404");
 });
 
 legoData.initialize().then(() => {
