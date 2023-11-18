@@ -1,12 +1,12 @@
 /********************************************************************************
-*  WEB322 – Assignment 04
+*  WEB322 – Assignment 05
 * 
 *  I declare that this assignment is my own work in accordance with Seneca's
 *  Academic Integrity Policy:
 * 
 *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
 * 
-*  Name: Lesvine Joseph Poovakulath Student ID: 175619212 Date: 04-11-2023
+*  Name: Lesvine Joseph Poovakulath Student ID: 175619212 Date: 18-11-2023
 *
 *  Published URL: 
 *
@@ -16,6 +16,7 @@ const legoData = require("./modules/legoSets");
 const path = require('path');
 const express = require('express');
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 
 const HTTP_PORT = process.env.PORT || 8080;
 app.set('view engine', 'ejs');
@@ -42,7 +43,6 @@ app.get("/lego/sets", async (req, res) => {
         } else {
             sets = await legoData.getAllSets();
         }
-        // Render the 'sets.ejs' view instead of sending JSON
         res.render("sets", { sets: sets });
     } catch (err) {
         res.status(404).render("404", { message: "The theme you are looking for does not exist in our database." });
@@ -65,6 +65,51 @@ app.get("/lego/sets/:setNum", async (req, res) => {
     }    
 });
 
+app.get('/lego/addSet', async (req, res) => {
+    try {
+        const themes = await legoData.getAllThemes();
+        res.render('addSet', { themes });
+    } catch (err) {
+        res.status(500).render('500', { message: `Error: ${err.message}` });
+    }
+});
+
+app.post('/lego/addSet', async (req, res) => {
+    try {
+        await legoData.addSet(req.body);
+        res.redirect('/lego/sets');
+    } catch (err) {
+        res.status(500).render('500', { message: `Error: ${err.message}` });
+    }
+});
+
+app.get('/lego/editSet/:num', async (req, res) => {
+    try {
+        const set = await legoData.getSetByNum(req.params.num);
+        const themes = await legoData.getAllThemes();
+        res.render("editSet", { set, themes });
+    } catch (err) {
+        res.status(404).render("404", { message: err.message });
+    }
+});
+
+app.post('/lego/editSet', async (req, res) => {
+    try {
+        await legoData.editSet(req.body.set_num, req.body);
+        res.redirect('/lego/sets');
+    } catch (err) {
+        res.render("500", { message: `Error: ${err.message}` });
+    }
+});
+
+app.get('/lego/deleteSet/:num', async (req, res) => {
+    try {
+        await legoData.deleteSet(req.params.num);
+        res.redirect('/lego/sets');
+    } catch (err) {
+        res.render('500', { message: `Error: ${err.message}` });
+    }
+});
 
 
 app.use((req, res) => {

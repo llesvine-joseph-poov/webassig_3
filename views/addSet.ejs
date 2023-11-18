@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Add Set</title>
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/lego/addSet'}) %>
+    <div class="main-content">
+        <h1>Add Set</h1>
+        <form action="/lego/addSet" method="POST">
+            <input type="text" name="name" required placeholder="Name">
+            <input type="number" name="year" required placeholder="Year">
+            <input type="number" name="num_parts" required placeholder="Number of Parts">
+            <input type="url" name="img_url" required placeholder="Image URL">
+            <select name="theme_id" required>
+                <% themes.forEach(theme => { %>
+                    <option value="<%= theme.id %>"><%= theme.name %></option>
+                <% }) %>
+            </select>
+            <input type="text" name="set_num" required placeholder="Set Number">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

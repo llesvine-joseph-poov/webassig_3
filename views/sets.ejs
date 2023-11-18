@@ -23,6 +23,7 @@
             <a href="/lego/sets?theme=Technic" class="btn">TECHNIC</a>
             <a href="/lego/sets?theme=Classic Town" class="btn">CLASSIC TOWN</a>
             <a href="/lego/sets?theme=Supplemental" class="btn">SUPPLEMENTAL</a>
+            
         </div>
     </section>
 
@@ -35,6 +36,8 @@
                 <p>Year: <%= set.year %></p>
                 <p>Theme: <%= set.theme %></p>
                 <p>Number of Parts: <%= set.num_parts %></p>
+                <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success">Edit</a>
+           
             </div>
         
           <% }); %>

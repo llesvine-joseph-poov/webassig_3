@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <%- include('partials/navbar', {page: ''}) %>
+    <div class="main-content">
+        <h1>Edit Set - <%= set.name %></h1>
+        <form action="/lego/editSet" method="POST">
+            <input type="text" name="set_num" value="<%= set.set_num %>" readonly class="cursor-not-allowed">
+            <select name="theme_id">
+                <% themes.forEach(theme => { %>
+                    <option <%= (set.theme_id == theme.id) ? "selected" : "" %> value="<%= theme.id %>"><%= theme.name %></option>
+                <% }) %>
+            </select>
+                <a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error">Delete Set</a>
+            <button type="submit">Update Set</button>
+        </form>
+    </div>
+</body>
+</html>
