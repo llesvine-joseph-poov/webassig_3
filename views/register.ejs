@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Lego Collection</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/register'}) %>
+    <div class="register-container">
+        <h1>Register</h1>
+        <p>Please provide your credentials below</p>
+        <% if (errorMessage) { %>
+            <div class="alert alert-error">
+                <span><%= errorMessage %></span>
+            </div>
+        <% } %>
+        <% if (successMessage) { %>
+            <div class="alert alert-success">
+                <span><%= successMessage %></span>
+            </div>
+        <% } %>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="userName">User Name</label>
+                <input type="text" id="userName" name="userName" placeholder="User Name" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" id="password2" name="password2" placeholder="Confirm Password" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>

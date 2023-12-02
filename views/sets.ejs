@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lego Sets Collection</title>
-
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -23,29 +22,26 @@
             <a href="/lego/sets?theme=Technic" class="btn">TECHNIC</a>
             <a href="/lego/sets?theme=Classic Town" class="btn">CLASSIC TOWN</a>
             <a href="/lego/sets?theme=Supplemental" class="btn">SUPPLEMENTAL</a>
-            
         </div>
     </section>
 
     <div class="main-content">
         <% sets.forEach(function(set) { %>
-            <div class="set-container"><img src="<%= set.img_url %>" alt="<%= 'Image of ' + set.name %>" class="set-image"></div>
-            
-            <div class="set-info">
-                <h2><%= set.name %></h2>
-                <p>Year: <%= set.year %></p>
-                <p>Theme: <%= set.theme %></p>
-                <p>Number of Parts: <%= set.num_parts %></p>
-                <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success">Edit</a>
-           
+            <div class="set-container">
+                <img src="<%= set.img_url %>" alt="<%= 'Image of ' + set.name %>" class="set-image">
+                <div class="set-info">
+                    <h2><%= set.name %></h2>
+                    <p>Year: <%= set.year %></p>
+                    <p>Theme: <%= set.Theme.name %></p>
+                    <p>Number of Parts: <%= set.num_parts %></p>
+                    <% if (session && session.user) { %>
+                        <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success">Edit</a>
+                    <% } %>
+                </div>
             </div>
-        
-          <% }); %>
-          
-        
-        
-        <blockquote id="quote">Quote will go here...</blockquote>
+        <% }); %>
 
+        <blockquote id="quote">Quote will go here...</blockquote>
         <a href="#" onclick="history.back(); return false;">Go Back</a>
     </div>
 

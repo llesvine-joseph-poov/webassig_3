@@ -182,3 +182,145 @@ footer {
 .set-info {
     flex: 1; 
 }
+/* Add styles for the login and register containers */
+.login-container,
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Style form groups for better spacing and alignment */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style buttons for form submission */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Alert styles for error or success messages */
+.alert {
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+/* User history table styles */
+.user-history-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.user-history-container table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+}
+
+.user-history-container th,
+.user-history-container td {
+    text-align: left;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+}
+
+.user-history-container th {
+    background-color: #f5f5f5;
+}
+
+/* Styles for ensuring login and register buttons are visible */
+.nav-buttons .btn-account {
+    display: inline-block;
+    margin-left: auto;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .hero h1,
+    .hero p,
+    .collection-intro h2,
+    .collection-intro p {
+        font-size: 90%;
+    }
+
+    .set-container,
+    .set-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .set-image {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Additional utility classes for cursor and display */
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.d-none {
+    display: none;
+}
+
+/* Adjust the padding for the dropdown menu for better touch targets */
+.details summary {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.details ul {
+    list-style: none;
+}
+
+.details ul li a {
+    padding: 0.5rem;
+    display: block;
+    color: #333;
+}
+
+.details ul li a:hover {
+    background-color: #f8f9fa;
+}
