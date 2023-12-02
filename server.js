@@ -16,6 +16,8 @@ const legoData = require("./modules/legoSets");
 const path = require('path');
 const express = require('express');
 const app = express();
+const authData = require("./modules/auth-service");
+
 app.use(express.urlencoded({ extended: true }));
 
 const HTTP_PORT = process.env.PORT || 8080;
@@ -116,7 +118,12 @@ app.use((req, res) => {
     res.status(404).render("404", { message: "Sorry, the page you are looking for cannot be found." });
 });
 
-
-legoData.initialize().then(() => {
-    app.listen(HTTP_PORT, () => { console.log(`server listening on: ${HTTP_PORT}`) });
+legoData.initialize()
+.then(authData.initialize)
+.then(() => {
+    app.listen(HTTP_PORT, () => {
+        console.log(`Server listening on: ${HTTP_PORT}`);
+    });
+}).catch(err => {
+    console.log(`Unable to start server: ${err}`);
 });
