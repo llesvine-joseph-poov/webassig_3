@@ -3,7 +3,6 @@
     <div class="nav-buttons">
         <a href="/lego/sets" class="<%= (page == '/lego/sets') ? 'active' : '' %> btn">View Collection</a>
         <a href="/about" class="<%= (page == '/about') ? 'active' : '' %> btn">About</a> 
-        <!-- Account Dropdown -->
         <% if (session && session.user) { %>
             <details>
                 <summary>Account: <%= session.user.userName %></summary>

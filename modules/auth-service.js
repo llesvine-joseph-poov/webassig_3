@@ -10,9 +10,8 @@ const userSchema = new Schema({
     loginHistory: [{ dateTime: Date, userAgent: String }]
 });
 
-let User; // This will be defined on new connection
+let User;
 
-// Initialize function to connect to the database
 function initialize() {
     return new Promise((resolve, reject) => {
         let db = mongoose.createConnection('mongodb+srv://llesvinejosephpoov:JxzzYv9EImesMfGS@cluster0.avvgqxq.mongodb.net/?retryWrites=true&w=majority');
@@ -28,37 +27,6 @@ function initialize() {
     });
 }
 
-/*function registerUser(userData) {
-    return new Promise(async (resolve, reject) => {
-        if (userData.password !== userData.password2) {
-            reject("Passwords do not match");
-            return;
-        }
-
-        try {
-            const saltRounds = 10;
-            const hashedPassword = bcrypt.hash(userData.password, saltRounds);
-
-            const newUser = new User({
-                userName: userData.userName,
-                password: hashedPassword,
-                email: userData.email,
-                loginHistory: []
-            });
-
-             newUser.save();
-
-            resolve();
-        } catch (err) {
-            if (err.code === 11000) {
-                reject("User Name already taken");
-            } else {
-                reject("There was an error creating the user: " + err);
-            }
-        }
-    });
-}*/
-
 function registerUser(userData) {
     return new Promise(function (resolve, reject) { 
         if (userData.password == userData.password2) {
@@ -68,17 +36,9 @@ function registerUser(userData) {
                 }
                 userData.password = hash;
                 let newUser = new User(userData);
-                newUser.save(function(err) {
-                    if (err) {
-                        if (err.code == 11000) {
-                            reject("User Name already taken");
-                        } else {
-                            reject("There was an error creating the user: " + err);
-                        }
-                    } else {
-                        resolve();
-                    }
-                });
+                newUser.save() 
+                .then(() => resolve())
+                .catch((err) => reject("There was an error creating the user: " + err));
             })
             } else {
             reject("Passwords do not match");
@@ -113,6 +73,6 @@ function checkUser(userData) {
     });
 }
 
-module.exports = { initialize, registerUser, checkUser /*, other functions */ };
+module.exports = { initialize, registerUser, checkUser };
 
 
