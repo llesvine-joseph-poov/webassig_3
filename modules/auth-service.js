@@ -14,7 +14,7 @@ let User;
 
 function initialize() {
     return new Promise((resolve, reject) => {
-        let db = mongoose.createConnection(process.env.MONO);
+        let db = mongoose.createConnection('mongodb+srv://llesvinejosephpoov:JxzzYv9EImesMfGS@cluster0.avvgqxq.mongodb.net/?retryWrites=true&w=majority');
 
         db.on('error', err => {
             reject(err);
