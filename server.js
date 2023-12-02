@@ -46,7 +46,7 @@ function ensureLogin(req, res, next) {
   }
 
 app.get('/login', (req, res) => {
-    const errorMessage = req.session.errorMessage;
+    const errorMessage = null;
 
     res.render('login',{errorMessage});
 });
@@ -187,6 +187,4 @@ legoData.initialize()
     app.listen(HTTP_PORT, () => {
         console.log(`Server listening on: ${HTTP_PORT}`);
     });
-}).catch(err => {
-    console.log(`Unable to start server: ${err}`);
 });
